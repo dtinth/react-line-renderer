@@ -93,9 +93,17 @@ export const FlexMessage = element<
 })
 
 export const Bubble = element<
-  Omit<LINE.FlexBubble, 'body'> & { children?: ReactNode }
+  Omit<LINE.FlexBubble, 'body' | 'header' | 'footer' | 'hero'> & {
+    children?: ReactNode
+    header?: ReactNode
+    footer?: ReactNode
+    hero?: ReactNode
+  }
 >('bubble', {
-  children: singleChild('body')
+  children: singleChild('body'),
+  header: singleChild('header'),
+  footer: singleChild('footer'),
+  hero: singleChild('hero')
 })
 
 export const Carousel = element<
@@ -116,5 +124,4 @@ export const Text = element<
   children: singleChild('text')
 })
 
-// export const Image = element<LINE.FlexImage>('image')
-// export const Text = element<Omit<LINE.FlexText, 'text'>>('text', 'text')
+export const Image = element<LINE.FlexImage>('image', {})
